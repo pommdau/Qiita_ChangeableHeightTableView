@@ -15,5 +15,4 @@ class ViewControllerTableCellView: NSTableCellView {
 
         // Drawing code here.
     }
-    
 }
