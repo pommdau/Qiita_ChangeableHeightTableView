@@ -10,6 +10,8 @@ import Cocoa
 
 class SecondViewController: NSViewController {
     
+    @IBOutlet var myTableView: NSTableView!
+    
     let messageTemplates = [
         """
     吾輩は猫である。名前はまだ無い。
@@ -26,30 +28,60 @@ class SecondViewController: NSViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do view setup here.
+        
+        for _ in 0..<10 {
+            let message_i = Int.random(in: 0...2)
+            messageList.append(messageTemplates[message_i])
+        }
     }
     
+    var messageList = [String]()
 }
 
 
 extension SecondViewController: NSTableViewDelegate, NSTableViewDataSource {
     
     func numberOfRows(in tableView: NSTableView) -> Int {
-        return 10
+        return messageList.count
     }
     
     func tableView(_ tableView: NSTableView,
                    viewFor tableColumn: NSTableColumn?,
                    row: Int) -> NSView? {
         
-        guard let cellView = tableView.makeView(withIdentifier: tableColumn!.identifier, owner: self) as? ViewControllerTableCellView else {
+        guard let cellView = tableView.makeView(withIdentifier: tableColumn!.identifier, owner: self) as? SecondViewControllerTableCellView else {
             return nil
         }
         cellView.nameTextField.stringValue = String(format: "%d番目の人", row)
-        cellView.messageTextField.stringValue = messageTemplates[Int.random(in: 0...2)]
+        cellView.messageTextField.stringValue = messageList[row]
         
         return cellView
     }
     
+    func tableView(_ tableView: NSTableView, heightOfRow row: Int) -> CGFloat {
+        let cellView = tableView.makeView(withIdentifier: NSUserInterfaceItemIdentifier(rawValue: "FirstColumn"), owner: self) as! SecondViewControllerTableCellView
+       cellView.nameTextField.stringValue = String(format: "%d番目の人", row)
+        cellView.messageTextField.stringValue = messageList[row]    // 計算用
+        
+        let widthOfMessageTextField = cellView.calculateWidthOfMessageTextField(tableView.frame.width)
+        let widthOfNameTextField = cellView.calculateWidthOfNameTextField(tableView.frame.width)
+        // 指定範囲でのNSTextFieldの描画予定範囲を取得し、そこからテーブルに必要な高さを計算する
+        let messageTextFieldRect = cellView.messageTextField.attributedStringValue.boundingRect(with: CGSize(width: widthOfMessageTextField,
+                                                                                                             height: CGFloat.greatestFiniteMagnitude), options: .usesLineFragmentOrigin, context: nil)
+        
+        let nameTextFieldRect = cellView.messageTextField.attributedStringValue.boundingRect(with: CGSize(width: widthOfNameTextField,
+                                                                                                          height: CGFloat.greatestFiniteMagnitude), options: .usesLineFragmentOrigin, context: nil)
+        
+        return cellView.nameTextFieldTopConstraint.constant
+            + nameTextFieldRect.height
+            + cellView.messageTextFieldTopConstraint.constant
+            + messageTextFieldRect.height
+            + cellView.messageTextFieldBottomConstraint.constant
+
+    }
     
+    //    tableViewColumnDidResize
+        func tableViewColumnDidResize(_ notification: Notification) {
+            myTableView.reloadData()
+        }
 }

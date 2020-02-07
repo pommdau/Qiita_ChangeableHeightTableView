@@ -14,14 +14,20 @@ class SecondViewControllerTableCellView: NSTableCellView {
     @IBOutlet var nameTextField: NSTextField!
     @IBOutlet var messageTextField: NSTextField!
     
-    @IBOutlet var widthConstraintOfMyImageView: NSLayoutConstraint!
-    @IBOutlet var leadingConstraintOfMyImageView: NSLayoutConstraint!
+    @IBOutlet var myImageViewHeightConstraint: NSLayoutConstraint!
+    @IBOutlet var myImageViewWidthConstraint: NSLayoutConstraint!
+    @IBOutlet var myImageViewTopConstraint: NSLayoutConstraint!
+    @IBOutlet var myImageViewBottomConstraint: NSLayoutConstraint!
+    @IBOutlet var myImageViewLeadingConstraint: NSLayoutConstraint!
     
-    @IBOutlet var trailingConstraintOfNameTextField: NSLayoutConstraint!
-    @IBOutlet var leadingConstraintOfNameTextField: NSLayoutConstraint!
+    @IBOutlet var nameTextFieldTopConstraint: NSLayoutConstraint!
+    @IBOutlet var nameTextFieldLeadingConstraint: NSLayoutConstraint!
+    @IBOutlet var nameTextFieldTrailingConstraint: NSLayoutConstraint!
     
-    @IBOutlet var trailingConstraintOfMessageTextField: NSLayoutConstraint!
-    @IBOutlet var leadingConstraintOfMessageTextField: NSLayoutConstraint!
+    @IBOutlet var messageTextFieldTopConstraint: NSLayoutConstraint!
+    @IBOutlet var messageTextFieldBottomConstraint: NSLayoutConstraint!
+    @IBOutlet var messageTextFieldLeadingConstraint: NSLayoutConstraint!
+    @IBOutlet var messageTextFieldTrailingConstraint: NSLayoutConstraint!
     
     override func draw(_ dirtyRect: NSRect) {
         super.draw(dirtyRect)
@@ -31,10 +37,18 @@ class SecondViewControllerTableCellView: NSTableCellView {
     
     func calculateWidthOfMessageTextField(_ widthOfTableView: CGFloat) -> CGFloat {
         return widthOfTableView
-            - leadingConstraintOfMyImageView.constant
-            - widthConstraintOfMyImageView.constant
-            - leadingConstraintOfMessageTextField.constant
-            - trailingConstraintOfMessageTextField.constant
+            - myImageViewLeadingConstraint.constant
+            - myImageViewWidthConstraint.constant
+            - messageTextFieldLeadingConstraint.constant
+            - messageTextFieldTrailingConstraint.constant
     }
     
+    func calculateWidthOfNameTextField(_ widthOfTableView: CGFloat) -> CGFloat {
+        return widthOfTableView
+            - myImageViewLeadingConstraint.constant
+            - myImageViewWidthConstraint.constant
+            - nameTextFieldLeadingConstraint.constant
+            - nameTextFieldTrailingConstraint.constant
+    }
 }
+
