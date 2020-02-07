@@ -12,6 +12,8 @@
 		D082FAE723EAD52900FD761E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D082FAE623EAD52900FD761E /* Assets.xcassets */; };
 		D082FAEA23EAD52900FD761E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D082FAE823EAD52900FD761E /* Main.storyboard */; };
 		D082FAF323EAD67300FD761E /* ViewControllerTableCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D082FAF223EAD67300FD761E /* ViewControllerTableCellView.swift */; };
+		D0D0368723EBC4E3008C2E4F /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0D0368623EBC4E3008C2E4F /* SecondViewController.swift */; };
+		D0D0368F23EBFED8008C2E4F /* SecondViewControllerTableCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0D0368E23EBFED8008C2E4F /* SecondViewControllerTableCellView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -23,6 +25,8 @@
 		D082FAEB23EAD52900FD761E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D082FAEC23EAD52900FD761E /* ChangeableRowHeightTableView.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = ChangeableRowHeightTableView.entitlements; sourceTree = "<group>"; };
 		D082FAF223EAD67300FD761E /* ViewControllerTableCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewControllerTableCellView.swift; sourceTree = "<group>"; };
+		D0D0368623EBC4E3008C2E4F /* SecondViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondViewController.swift; sourceTree = "<group>"; };
+		D0D0368E23EBFED8008C2E4F /* SecondViewControllerTableCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondViewControllerTableCellView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,6 +62,8 @@
 				D082FAE223EAD52800FD761E /* AppDelegate.swift */,
 				D082FAE423EAD52800FD761E /* ViewController.swift */,
 				D082FAF223EAD67300FD761E /* ViewControllerTableCellView.swift */,
+				D0D0368623EBC4E3008C2E4F /* SecondViewController.swift */,
+				D0D0368E23EBFED8008C2E4F /* SecondViewControllerTableCellView.swift */,
 				D082FAE623EAD52900FD761E /* Assets.xcassets */,
 				D082FAE823EAD52900FD761E /* Main.storyboard */,
 				D082FAEB23EAD52900FD761E /* Info.plist */,
@@ -136,8 +142,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D0D0368723EBC4E3008C2E4F /* SecondViewController.swift in Sources */,
 				D082FAE523EAD52800FD761E /* ViewController.swift in Sources */,
 				D082FAE323EAD52800FD761E /* AppDelegate.swift in Sources */,
+				D0D0368F23EBFED8008C2E4F /* SecondViewControllerTableCellView.swift in Sources */,
 				D082FAF323EAD67300FD761E /* ViewControllerTableCellView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
