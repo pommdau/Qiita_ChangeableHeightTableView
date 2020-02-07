@@ -60,7 +60,7 @@ extension SecondViewController: NSTableViewDelegate, NSTableViewDataSource {
     
     func tableView(_ tableView: NSTableView, heightOfRow row: Int) -> CGFloat {
         let cellView = tableView.makeView(withIdentifier: NSUserInterfaceItemIdentifier(rawValue: "FirstColumn"), owner: self) as! SecondViewControllerTableCellView
-       cellView.nameTextField.stringValue = String(format: "%d番目の人", row)
+        cellView.nameTextField.stringValue = String(format: "%d番目の人", row)
         cellView.messageTextField.stringValue = messageList[row]    // 計算用
         
         let widthOfMessageTextField = cellView.calculateWidthOfMessageTextField(tableView.frame.width)
@@ -77,11 +77,11 @@ extension SecondViewController: NSTableViewDelegate, NSTableViewDataSource {
             + cellView.messageTextFieldTopConstraint.constant
             + messageTextFieldRect.height
             + cellView.messageTextFieldBottomConstraint.constant
-
+        
     }
     
     //    tableViewColumnDidResize
-        func tableViewColumnDidResize(_ notification: Notification) {
-            myTableView.reloadData()
-        }
+    func tableViewColumnDidResize(_ notification: Notification) {
+        myTableView.reloadData()
+    }
 }
